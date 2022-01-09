@@ -1,0 +1,31 @@
+version: '3'
+services:
+
+  discovery:
+    container_name: service-discovery
+    build:
+      context: ./containerized-discovery
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+
+  gateway:
+    container_name: service-gateway
+    build:
+      context: ./containerized-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8762:8762"
+    links:
+      - discovery
+
+  users:
+    container_name: service-users
+    build:
+      context: ./containerized-users
+      dockerfile: Dockerfile
+    ports:
+      - "7500:2222"
+    links:
+      - discovery
+
