@@ -36,8 +36,10 @@ sdk install maven 3.8.4
 sdk use maven 3.8.4 
 java -version
 mvn -v
-mvn install
-./mvnw clean spring-boot:run # Run spring boot
+mvn clean package
+docker-compose up --build -d
+docker-compose logs
+docker-compose down
 ```
 
 
