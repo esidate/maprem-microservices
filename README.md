@@ -1,32 +1,12 @@
 # Maprem ENSAK Projet
 
-This project is created to get experience on **Microservices With Netflix OSS**. This is a simple project by coded imperative programming with simple business requirements.
+**Microservices With Netflix OSS**. This is meant to be a hello world project.
 
-## Used Netflix OSS
-
-- **Netflix Eureka** is used for discovery service.
-- **Netflix Ribbon** is used for client side load-balancing.
-- **Netflix Zuul** is used for gateway.
-  
-## Microservices
-
-| Service | EndPoint           | Port  | Method | Description                     |
-| ------- | ------------------ | :---: | :----: | ------------------------------- |
-| Users   | /api/v1/users/{id} | 7500  |  GET   | Return detail of specified user |
-| Users   | /api/v1/users      | 7500  |  GET   | Return details of all acounts   |
-
-## Gateways
-
-| Service |          EndPoint           |
-| ------- | :-------------------------: |
-| Users   | **/user**/api/v1/users/{id} |
-| Users   |   **/user**/api/v1/users    |
-
-URI for gateway: *http://localhost:8762*  
-URI for eureka: *http://localhost:8761*
-
-
-## Build & Run
+- **Netflix Eureka** for Service Discovery.
+- **Netflix Ribbon** for Load-balancing.
+- **Netflix Zuul** as an API Gateway.
+ 
+## Setup
 
 ```sh
 curl -s "https://get.sdkman.io" | bash
@@ -42,14 +22,26 @@ docker-compose logs
 docker-compose down
 ```
 
+## Gateways
 
-- *>mvn clean package* : to build
-- *>docker-compose up* --build : build docker images and containers and run containers
-- *>docker-compose stop* : stop the dockerized services
-- Each maven module has a Dockerfile.
+| Service |          EndPoint           |
+| ------- | :-------------------------: |
+| Users   | **/user**/api/v1/users/{id} |
+| Users   |   **/user**/api/v1/users    |
 
-In docker-compose.yml file:
+URI for gateway: *http://localhost:8762*  
+URI for eureka: *http://localhost:8761*
 
-- Users Service : **__2222__** port is mapped to **__7500__** port of host
-- Eureka Discovery Service : **__8761__** port is mapped to **__8761__** port of host
-- Spring Boot (/ Zuul) Gateway Service : **__8762__** port is mapped to **__8762__** port of host
+## Microservices
+
+| Service | EndPoint           | Port  | Method | Description                     |
+| ------- | ------------------ | :---: | :----: | ------------------------------- |
+| Users   | /api/v1/users/{id} | 7500  |  GET   | Return detail of specified user |
+| Users   | /api/v1/users      | 7500  |  GET   | Return details of all acounts   |
+
+### Todo
+
+- Add a database
+- Add AuthN service
+- Add AuthZ in API Gateway
+
