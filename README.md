@@ -22,7 +22,7 @@ This project is created to get experience on **Microservices With Netflix OSS**.
 | Users   | **/user**/api/v1/users/{id} |
 | Users   |   **/user**/api/v1/users    |
 
-URI for gateway: *http://localhost:8762*
+URI for gateway: *http://localhost:8762*  
 URI for eureka: *http://localhost:8761*
 
 
